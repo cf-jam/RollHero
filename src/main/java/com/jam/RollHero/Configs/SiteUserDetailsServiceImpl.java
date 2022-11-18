@@ -16,7 +16,7 @@ public class SiteUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null; // PROBLEM???
+        return (UserDetails) siteUserRepository.findByUsername(username);
     }
 
 //    @Override

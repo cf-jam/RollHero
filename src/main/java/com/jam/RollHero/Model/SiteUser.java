@@ -23,6 +23,11 @@ public class SiteUser implements UserDetails {
 
     public SiteUser() {}
 
+    public SiteUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
 //    GETTERS SETTERS OVERRIDES
 
     public Long getId() {
