@@ -1,5 +1,7 @@
 package com.jam.RollHero;
 
+import com.jam.RollHero.Model.Hero;
+import com.jam.RollHero.Util.Dice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
