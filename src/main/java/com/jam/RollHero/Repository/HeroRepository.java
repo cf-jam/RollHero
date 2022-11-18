@@ -1,4 +1,7 @@
 package com.jam.RollHero.Repository;
 
-public class HeroRepository {
+import com.jam.RollHero.Model.Hero;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HeroRepository extends JpaRepository<Hero, Long> {
 }

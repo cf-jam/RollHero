@@ -1,4 +1,4 @@
-package com.jam.RollHero;
+package com.jam.RollHero.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
