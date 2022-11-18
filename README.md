@@ -23,13 +23,13 @@ In the terminal, navigate to the topmost folder of the project. Enter `./gradlew
 
 ### Project documents
 
-[Software Requirements]()
+[Software Requirements](requirements.md)
 
-[Domain Model]()
+[Domain Model](/img/domain-model-day1.png)
 
-[Wireframe]()
+[Wireframe](./img/wireframe-day1.png)
 
-[Database Schema]()
+[Database Schema](/img/db-schema-day1.png)
 
 [Trello](https://trello.com/b/MUfb58hd/hero-roll)
 
