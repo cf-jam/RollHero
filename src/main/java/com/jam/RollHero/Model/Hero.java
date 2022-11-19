@@ -25,12 +25,16 @@ public class Hero {
 
     private Integer heroLevel = 1;
 
-    public Hero(String race,String heroClass, String name) {
+    public Hero() {
+    }
+
+    public Hero(String race, String heroClass, String name, SiteUser siteUser) {
         this.name = name;
         this.makeStatMap();
         this.setHeroRace(race);
         this.dummyHeroStats();
         this.setHeroClass(heroClass);
+        this.siteUser = siteUser;
     }
 
     // TEST

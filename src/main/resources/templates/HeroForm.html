@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="col-auto">
+    <form action="/heroform" method="POST">
+        <div class="form-group">
+            <label>Hero Name</label>
+            <input type="text" class="form-control" name="name">
+
+        </div>
+
+        <select class="form-control" name="heroClass">
+            <label>Class</label>
+            <option value="barbarian">Barbarian</option>
+            <option value="bard">Bard</option>
+            <option value="cleric">Cleric</option>
+            <option value="druid">Druid</option>
+            <option value="fighter">Fighter</option>
+            <option value="monk">Monk</option>
+            <option value="paladin">Paladin</option>
+            <option value="ranger">Ranger</option>
+            <option value="rouge">Rouge</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="warlock">Warlock</option>
+            <option value="wizard">Wizard</option>
+        </select>
+        <hr>
+        <select class="form-control" name="heroRace">
+            <option value="dwarf">Dwarf</option>
+            <option value="elf">Elf</option>
+            <option value="halfling">Halfling</option>
+            <option value="human">Human</option>
+            <option value="half-orc">Half-Orc</option>
+            <option value="half-elf">Half-Elf</option>
+            <option value="dragonborne">Dragonborne</option>
+            <option value="tiefling">Tiefling</option>
+            <option value="gnome">Gnome</option>
+        </select>
+        <input type="hidden" name="username" th:value="${username}"/>
+        <button type="submit" class="btn btn-outline-success">Create</button>
+    </form>
+
+</div>
+</body>
+</html>
