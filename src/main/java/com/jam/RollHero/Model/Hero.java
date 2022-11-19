@@ -1,9 +1,19 @@
-package com.jam.RollHero;
+package com.jam.RollHero.Model;
 
+import com.jam.RollHero.Util.Dice;
+
+import javax.persistence.*;
 import java.util.HashMap;
 
+@Entity
 public class Hero {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @ManyToOne
+    SiteUser siteUser;
     HashMap<String, Integer> statMap = new HashMap<>();
 
     private String name;
@@ -15,12 +25,16 @@ public class Hero {
 
     private Integer heroLevel = 1;
 
-    public Hero(String race,String heroClass, String name) {
+    public Hero() {
+    }
+
+    public Hero(String race, String heroClass, String name, SiteUser siteUser) {
         this.name = name;
         this.makeStatMap();
         this.setHeroRace(race);
         this.dummyHeroStats();
         this.setHeroClass(heroClass);
+        this.siteUser = siteUser;
     }
 
     // TEST
