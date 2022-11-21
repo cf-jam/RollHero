@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 public class HeroController {
@@ -40,17 +41,25 @@ public class HeroController {
         heroRepository.save(newHero);
         return new RedirectView("/");
     }
-    @GetMapping("user/heroes/{id}")
-    public String getUserHeroes(Principal p,Model m,@PathVariable Long id){
-        SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
-        m.addAttribute("heroList",heroRepository.findAllBySiteUserId(id));
-        return "displayHeroes";
-    }
 
-    @GetMapping("/card")
-    public String getHeroCard(Model m){
+//    @GetMapping("user/heroes/{id}") //old code
+//    public String getUserHeroes(Principal p, Model m, @PathVariable Long id) {
+//        SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
+//        m.addAttribute("heroList", heroRepository.findAllBySiteUserId(id));
+//        return "displayHeroes";
+//    }
+
+    @GetMapping("user/cards/{id}")
+    public String getUserHeroCards(Principal p, Model m, @PathVariable Long id) throws NoSuchElementException {
+        try{
+            SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
             List<Hero> itemList = heroRepository.findAll();
-            m.addAttribute("itemList",itemList);
-        return "/fragments/card";
+            m.addAttribute("itemList", heroRepository.findAllBySiteUserId(id));
+            return "/fragments/card";
+        }
+        catch (Exception e){
+            System.out.println("something wrong");
+        }
+        return null;
     }
 }

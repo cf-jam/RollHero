@@ -12,12 +12,32 @@
              style="width: 15rem; display: inline-block">
             <div class="card-body">
                 <h5 th:text="${item.name}">Name</h5>
-                <h5 class="card-title" th:text="${'Class: ' + item.heroClass}">Id</h5>
-                <h5 class="card-title" th:text="${'Race: ' + item.heroRace}">Id</h5>
+                <h5 class="card-title"
+                    th:text="${'Class: ' + item.heroClass.substring(0,1).toUpperCase()+item.heroClass.substring(1)}">
+                    class</h5>
+                <h5 class="card-title"
+                    th:text="${'Race: ' + item.heroRace.substring(0,1).toUpperCase()+item.heroRace.substring(1)}">
+                    race</h5>
                 <p class="card-text" th:text="${item.describeHero}">Desc</p>
-                <!--        <a th:href="@{'/createforItemId/' + ${item.id}}"-->
-                <!--           class="stretched-link btn btn-sm btn-primary mr-2"><i-->
-                <!--                class="fas fa-rocket mr-2"></i> Start New Discussion</a>-->
+
+                <table class="table-bordered card-text" style="width: 30%">
+                    <thead>
+                    <tr th:each="stat : ${item.getStatMap.entrySet}">
+                        <th scope="col">1</th>
+                        <th class="card-text" th:text="${stat.getKey + '  '}"></th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <tr th:each="stat : ${item.getStatMap.entrySet}">
+                        <th scope="row">1</th>
+                        <td class="card-text" th:text="${stat.getValue}"></td>
+
+                    </tr>
+                    </tbody>
+                    <!--                    <tbody th:each="stat : ${item.getStatMap.entrySet}">-->
+                </table>
+
             </div>
         </div>
     </tr>
