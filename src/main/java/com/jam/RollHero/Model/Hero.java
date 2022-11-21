@@ -19,7 +19,6 @@ public class Hero {
     private String name;
     private String heroRace = null;
     private String heroClass = null;
-    public String Description;
 
     private Integer hpMaximum = 0;
 

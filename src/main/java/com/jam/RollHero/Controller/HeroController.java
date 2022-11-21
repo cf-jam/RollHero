@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HeroController {
@@ -44,5 +45,12 @@ public class HeroController {
         SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
         m.addAttribute("heroList",heroRepository.findAllBySiteUserId(id));
         return "displayHeroes";
+    }
+
+    @GetMapping("/card")
+    public String getHeroCard(Model m){
+            List<Hero> itemList = heroRepository.findAll();
+            m.addAttribute("itemList",itemList);
+        return "/fragments/card";
     }
 }
