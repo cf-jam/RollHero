@@ -18,6 +18,7 @@
 
         <select class="form-control" name="heroClass">
             <label>Class</label>
+            <option>Pick a class</option>
             <option value="barbarian">Barbarian</option>
             <option value="bard">Bard</option>
             <option value="cleric">Cleric</option>
@@ -33,6 +34,7 @@
         </select>
         <hr>
         <select class="form-control" name="heroRace">
+            <option>Pick a race</option>
             <option value="dwarf">Dwarf</option>
             <option value="elf">Elf</option>
             <option value="halfling">Halfling</option>
@@ -43,6 +45,20 @@
             <option value="tiefling">Tiefling</option>
             <option value="gnome">Gnome</option>
         </select>
+        <ul th:each = "stat,iter:${statArray}">
+            <li>
+                <div th:text="${stat}"> </div>
+                <select class="form-control" th:name="inputHero + ${iter.index}">
+                    <option>Pick an Attribute</option>
+                    <option th:value="'str,' + ${stat}">Strength</option>
+                    <option th:value="'dex,' + ${stat}">Dexterity</option>
+                    <option th:value="'con,' + ${stat}">Constitution</option>
+                    <option th:value="'intel,' + ${stat}">Intelligence</option>
+                    <option th:value="'wis,' + ${stat}">Wisdom</option>
+                    <option th:value="'cha,' + ${stat}">Charisma</option>
+                </select>
+            </li>
+        </ul>
         <input type="hidden" name="username" th:value="${username}"/>
         <button type="submit" class="btn btn-outline-success">Create</button>
     </form>
