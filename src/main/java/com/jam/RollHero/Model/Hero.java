@@ -16,10 +16,13 @@ public class Hero {
     SiteUser siteUser;
     HashMap<String, Integer> statMap = new HashMap<>();
 
+    public HashMap<String, Integer> getStatMap() {
+        return statMap;
+    }
+
     private String name;
     private String heroRace = null;
     private String heroClass = null;
-    public String Description;
 
     private Integer hpMaximum = 0;
 

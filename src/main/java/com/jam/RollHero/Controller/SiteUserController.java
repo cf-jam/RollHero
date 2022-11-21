@@ -42,8 +42,13 @@ public class SiteUserController {
     }
 
     @GetMapping("/login")
-    public String getLogin(){return "login.html";}
-
+    public String getLogin(){
+        return "login.html";
+    }
+    @GetMapping("/dashboard")
+    public String getDashboard(){
+        return "dashboard.html";
+    }
     @GetMapping("/secret") // For testing non-logged in user restriction
     public String getSecret(){return "secretTEST.html";}
 
