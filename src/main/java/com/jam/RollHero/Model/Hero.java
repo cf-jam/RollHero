@@ -31,17 +31,17 @@ public class Hero {
     public Hero() {
     }
 
-    public Hero(String race, String heroClass, String name, SiteUser siteUser) {
+    public Hero(String race, String heroClass, String name, SiteUser siteUser, HashMap inputHero) {
         this.name = name;
         this.makeStatMap();
         this.setHeroRace(race);
-        this.dummyHeroStats();
         this.setHeroClass(heroClass);
         this.siteUser = siteUser;
+        this.statMap = inputHero;
     }
 
     // TEST
-    public void dummyHeroStats() {
+    public void dummyHeroStats(String str, String dex, String intel, String con, String wis, String cha) {
         statMap.put("str", Dice.rollStat() + statMap.get("str"));
         statMap.put("dex", Dice.rollStat() + statMap.get("dex"));
         statMap.put("intel", Dice.rollStat() + statMap.get("intel"));
