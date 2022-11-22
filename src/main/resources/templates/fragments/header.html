@@ -13,19 +13,16 @@
             <a class="navbar-brand text-danger">Roll Hero</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="text-secondary" th:if="${siteUser != null}">
-                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="${'/user/cards/' + siteUser.getId}">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="text-secondary" th:if="${siteUser == null}">
-                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="text-secondary" th:if="${siteUser == null}">
-                    <a class="nav-link" href="/signup">Sign-up <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Sign-up <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="text-secondary" th:if="${siteUser != null}">
                     <a class="nav-link" href="/heroform">Create A Hero <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="text-secondary" th:if="${siteUser != null}">
-                    <a class="nav-link" th:href="${'/user/cards/' + siteUser.getId}">My Heroes <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="text-secondary" th:if="${siteUser != null}">
                     <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>

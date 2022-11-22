@@ -29,7 +29,9 @@ public class HeroController {
     SiteUserRepository siteUserRepository;
 
     @GetMapping("/heroform")
-    public String getHeroForm(Model m) {
+    public String getHeroForm(Model m, Principal p) {
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
         int[] statArray = new int[6];
         for(int i = 0; i < 6; i++ ){
             statArray[i] = Dice.rollStat();
@@ -39,7 +41,7 @@ public class HeroController {
     }
 
     @PostMapping("/heroform")
-    public RedirectView postHeroForm(Principal p, Model m, String name, String heroRace, String heroClass, String inputHero5, String inputHero4, String inputHero3, String inputHero2, String inputHero0, String inputHero1){
+    public RedirectView postHeroForm(Principal p, Model m, String name, String heroRace, String heroClass, String inputHero5, String inputHero4, String inputHero3, String inputHero2, String inputHero1, String inputHero0){
         SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
         HashMap<String, Integer> statsHero = new HashMap<>();
         statsHero.put(inputHero0.split(",")[0], Integer.parseInt(inputHero0.split(",")[1]));
@@ -51,7 +53,7 @@ public class HeroController {
         Hero newHero = new Hero(heroRace, heroClass, name, siteUser, statsHero);
         m.addAttribute(siteUser);
         heroRepository.save(newHero);
-        return new RedirectView("/");
+        return new RedirectView("/dashboard");
     }
 
     @GetMapping("user/cards/{id}")
@@ -59,11 +61,11 @@ public class HeroController {
         try{
             SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
             SiteUser viewUser = siteUserRepository.findByUsername(p.getName());
-            List<Hero> itemList = heroRepository.findAll();
+//            List<Hero> itemList = heroRepository.findAll();
             m.addAttribute("siteUser", siteUser);
             m.addAttribute("viewUser", viewUser);
             m.addAttribute("itemList", heroRepository.findAllBySiteUserId(id));
-            return "/fragments/card";
+            return "/dashboard";
         }
         catch (Exception e){
             System.out.println("something wrong");
