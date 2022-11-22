@@ -11,7 +11,7 @@
     <div th:replace="/fragments/header :: ul"></div>
 </header>
 <div class="col-auto">
-    <h3 th:text="${'Welcome to RollHero '+siteUser.username.substring(0,1).toUpperCase()+siteUser.username.substring(1)+'!'}"></h3>
+    <h3 th:text="${'Welcome to RollHero ' + siteUser.username.substring(0,1).toUpperCase() + siteUser.username.substring(1)+'!'}"></h3>
     <p>image_placeholder</p>
     <a th:href="@{/heroform}">create a character</a>
 </div>
