@@ -49,8 +49,8 @@ public class SiteUserController {
     }
     @GetMapping("/dashboard")
     public String getDashboard(Principal p, Model m){
-        String name = p.getName();
-        m.addAttribute("name",name);
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
         return "dashboard.html";
     }
     @GetMapping("/secret") // For testing non-logged in user restriction

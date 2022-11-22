@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="/styles/index.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
-
 <body>
+<header>
+    <div th:replace="/fragments/header :: ul"></div>
+</header>
 <div class="col-auto">
     <h3 th:text="${'Welcome to RollHero '+name.substring(0,1).toUpperCase()+name.substring(1)+'!'}"></h3>
     <p>image_placeholder</p>
