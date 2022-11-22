@@ -29,7 +29,9 @@ public class HeroController {
     SiteUserRepository siteUserRepository;
 
     @GetMapping("/heroform")
-    public String getHeroForm(Model m) {
+    public String getHeroForm(Model m, Principal p) {
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
         int[] statArray = new int[6];
         for(int i = 0; i < 6; i++ ){
             statArray[i] = Dice.rollStat();

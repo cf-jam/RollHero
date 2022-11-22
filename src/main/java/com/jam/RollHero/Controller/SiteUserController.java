@@ -43,17 +43,17 @@ public class SiteUserController {
     public String getSignup(){return "signup.html";}
 
     @PostMapping("/signup")
-    public String postSignup(String username, String password){
+    public RedirectView postSignup(String username, String password){
         String hashedPw = passwordEncoder.encode(password);
         SiteUser newUser = new SiteUser(username, hashedPw);
         siteUserRepository.save(newUser);
         authWithHttpServletRequest(username, password);
-        return "secretTEST.html";
+        return new RedirectView("/dashboard");
     }
 
     @GetMapping("/login")
     public String getLogin(){
-        return "login.html";
+        return "index.html";
     }
     @GetMapping("/dashboard")
     public RedirectView getDashboard(Principal p, Model m){
