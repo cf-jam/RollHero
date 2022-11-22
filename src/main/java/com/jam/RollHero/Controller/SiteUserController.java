@@ -5,11 +5,13 @@ import com.jam.RollHero.Repository.SiteUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 @Controller
 public class SiteUserController {
@@ -46,7 +48,9 @@ public class SiteUserController {
         return "login.html";
     }
     @GetMapping("/dashboard")
-    public String getDashboard(){
+    public String getDashboard(Principal p, Model m){
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
         return "dashboard.html";
     }
     @GetMapping("/secret") // For testing non-logged in user restriction

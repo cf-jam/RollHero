@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li th:if="${siteUser == null}"><a href="/login">Log In</a></li>
+    <li th:if="${siteUser == null}"><a href="/signup">Sign Up</a></li>
+    <li><a href="/dashboard">Home</a></li>
+    <li th:if="${siteUser != null}"><a href="/heroform">Create A Hero</a></li>
+    <li th:if="${siteUser != null}"><a th:href="${'/user/cards/' + siteUser.getId}">My Heroes</a></li>
+    <li th:if="${siteUser != null}"><a href="/logout">Logout</a></li>
+</ul>
+</body>
+</html>
