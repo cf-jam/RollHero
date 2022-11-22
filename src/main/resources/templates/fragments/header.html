@@ -7,29 +7,26 @@
 </head>
 <body>
 
-<ul>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark style={{100vw}}">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand text-danger">Roll Hero</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark style={{100vw}} mb-3">
+            <img src="/images/RollHero1.png" width="15%" height="15%" alt="RollHero image" class="mr-3 p-1">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="text-secondary" th:if="${siteUser != null}">
-                    <a class="nav-link" th:href="${'/user/cards/' + siteUser.getId}">Dashboard <span class="sr-only">(current)</span></a>
+                    <h5> <a class="nav-link ml-2" th:href="${'/user/cards/' + siteUser.getId}">Dashboard <span class="sr-only">(current)</span></a></h5>
                 </li>
                 <li class="text-secondary" th:if="${siteUser == null}">
-                    <a class="nav-link" href="/">Login <span class="sr-only">(current)</span></a>
+                    <h5><a class="nav-link ml-2" href="/">Login <span class="sr-only">(current)</span></a></h5>
                 </li>
                 <li class="text-secondary" th:if="${siteUser == null}">
-                    <a class="nav-link" href="/">Sign-up <span class="sr-only">(current)</span></a>
+                    <h5><a class="nav-link ml-2" href="/">Sign-up <span class="sr-only">(current)</span></a></h5>
                 </li>
                 <li class="text-secondary" th:if="${siteUser != null}">
-                    <a class="nav-link" href="/heroform">Create A Hero <span class="sr-only">(current)</span></a>
+                    <h5><a class="nav-link ml-2" href="/heroform">Create A Hero <span class="sr-only">(current)</span></a></h5>
                 </li>
                 <li class="text-secondary" th:if="${siteUser != null}">
-                    <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                   <h5><a class="nav-link ml-2" href="/logout">Logout <span class="sr-only">(current)</span></a></h5>
                 </li>
             </ul>
         </div>
     </nav>
-</ul>
 </body>
 </html>
