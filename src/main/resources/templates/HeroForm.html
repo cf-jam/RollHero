@@ -4,82 +4,97 @@
 
     <meta charset="UTF-8">
     <title>Form</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css
+
+
+
+">
+
 </head>
 <body>
 <div th:replace="/fragments/header :: nav"></div>
 <div class="container mt-5">
-<div class="col-auto">
-    <form action="/heroform" method="POST">
-        <div class="form-group">
-            <label>Hero Name</label>
-            <input type="text" class="form-control" name="name">
-        </div>
+    <div class="col-auto">
+        <form action="/heroform" method="POST">
+            <div class="form-group">
+                <label>Hero Name</label>
+                <input type="text" class="form-control" name="name">
+            </div>
 
-        <div class="form-group">
+            <div class="form-group">
 
-        <label>Class</label>
-        <select class="form-control" name="heroClass">
-            <option>Pick a Class</option>
-            <option value="barbarian">Barbarian</option>
-            <option value="bard">Bard</option>
-            <option value="cleric">Cleric</option>
-            <option value="druid">Druid</option>
-            <option value="fighter">Fighter</option>
-            <option value="monk">Monk</option>
-            <option value="paladin">Paladin</option>
-            <option value="ranger">Ranger</option>
-            <option value="rogue">Rogue</option>
-            <option value="sorcerer">Sorcerer</option>
-            <option value="warlock">Warlock</option>
-            <option value="wizard">Wizard</option>
-        </select>
-        </div>
+                <label>C l a s s</label>
+                <select class="form-control test" name="heroClass">
+                    <option>Pick a Class</option>
+                    <option value="barbarian">Barbarian</option>
+                    <option value="bard">Bard</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="druid">Druid</option>
+                    <option value="fighter">Fighter</option>
+                    <option value="monk">Monk</option>
+                    <option value="paladin">Paladin</option>
+                    <option value="ranger">Ranger</option>
+                    <option value="rogue">Rogue</option>
+                    <option value="sorcerer">Sorcerer</option>
+                    <option value="warlock">Warlock</option>
+                    <option value="wizard">Wizard</option>
+                </select>
+            </div>
 
-        <hr>
-        <div class="form-group">
-            <label>Race</label>
-            <select class="form-control" name="heroRace">
-                <option>Pick a Race</option>
-                <option value="dwarf">Dwarf</option>
-                <option value="elf">Elf</option>
-                <option value="halfling">Halfling</option>
-                <option value="human">Human</option>
-                <option value="half-orc">Half-Orc</option>
-                <option value="half-elf">Half-Elf</option>
-                <option value="dragonborne">Dragonborne</option>
-                <option value="tiefling">Tiefling</option>
-                <option value="gnome">Gnome</option>
-            </select>
-        </div>
-        <hr>
-        <div class="form-group">
-            <label>Attributes</label>
-            <ul th:each = "stat,iter:${statArray}">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div></div>
-                    <div>
-                        <select class="form-control" th:name="inputHero + ${iter.index}">
-                            <option>Pick an Attribute</option>
-                            <option th:value="'str,' + ${stat}">Strength</option>
-                            <option th:value="'dex,' + ${stat}">Dexterity</option>
-                            <option th:value="'con,' + ${stat}">Constitution</option>
-                            <option th:value="'intel,' + ${stat}">Intelligence</option>
-                            <option th:value="'wis,' + ${stat}">Wisdom</option>
-                            <option th:value="'cha,' + ${stat}">Charisma</option>
-                        </select>
+            <hr>
+            <div class="form-group">
+                <label>Race</label>
+                <select class="form-control" name="heroRace">
+                    <option>Pick a Race</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="elf">Elf</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="human">Human</option>
+                    <option value="half-orc">Half-Orc</option>
+                    <option value="half-elf">Half-Elf</option>
+                    <option value="dragonborne">Dragonborne</option>
+                    <option value="tiefling">Tiefling</option>
+                    <option value="gnome">Gnome</option>
+                </select>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label>Attributes</label>
+                <ul th:each="stat,iter:${statArray}">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div></div>
+                        <div>
+                            <select class="form-control" th:name="inputHero + ${iter.index}">
+                                <option disabled selected>Pick an Attribute</option>
+                                <option th:value="'str,' + ${stat}">Strength</option>
+                                <option th:value="'dex,' + ${stat}">Dexterity</option>
+                                <option th:value="'con,' + ${stat}">Constitution</option>
+                                <option th:value="'intel,' + ${stat}">Intelligence</option>
+                                <option th:value="'wis,' + ${stat}">Wisdom</option>
+                                <option th:value="'cha,' + ${stat}">Charisma</option>
+                            </select>
+                        </div>
+                        <div class="text-right h3" th:text="${stat}"></div>
+                        <div></div>
+
                     </div>
-                    <div class="text-right h3" th:text="${stat}"> </div>
-                    <div></div>
+                </ul>
+            </div>
 
-                </div>
-            </ul>
-        </div>
+            <input type="hidden" name="username" th:value="${username}"/>
 
-        <input type="hidden" name="username" th:value="${username}"/>
-        <button type="submit" class="btn btn-outline-success">Create</button>
-    </form>
-</div>
+            <div class="col text-center pt-5">
+                <button type="submit" class="btn btn-outline-dark">
+                    ROLL&nbsp <i type="submit" class="fas fa-dice-d20 slow-spin fa-4x"
+                                 style="color:red">
+                </i> &nbspHERO
+                </button>
+                <div>
+        </form>
+
+    </div>
 </div>
 </body>
 </html>
