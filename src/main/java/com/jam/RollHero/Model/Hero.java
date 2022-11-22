@@ -26,7 +26,11 @@ public class Hero {
 
     private Integer hpMaximum = 0;
 
+    private Integer speed = 0;
+
     private Integer heroLevel = 1;
+
+    private Integer armorClass = 10;
 
     public Hero() {
     }
@@ -38,6 +42,7 @@ public class Hero {
         this.setHeroClass(heroClass);
         this.siteUser = siteUser;
         this.statMap = inputHero;
+        this.setArmorClass(this.getArmorClass() + findModifier(this.getStatMap().get("dex")));
     }
 
     // TEST
@@ -90,12 +95,15 @@ public class Hero {
         switch (heroRace) {
             case "dwarf":
                 statMap.put("con", 2);
+                this.setSpeed(25);
                 break;
             case "elf":
                 statMap.put("intel", 1);
+                this.setSpeed(30);
                 break;
             case "halfling":
                 statMap.put("dex", 2);
+                this.setSpeed(25);
                 break;
             case "human":
                 statMap.put("str", 1);
@@ -104,23 +112,29 @@ public class Hero {
                 statMap.put("con", 1);
                 statMap.put("wis", 1);
                 statMap.put("cha", 1);
+                this.setSpeed(30);
                 break;
-            case "half-ork":
+            case "half-orc":
                 statMap.put("str", 2);
                 statMap.put("con", 1);
+                this.setSpeed(30);
                 break;
             case "half-elf":
                 statMap.put("cha", 2);
                 statMap.put("intel", 1);
+                this.setSpeed(30);
                 break;
             case "dragonborne":
                 statMap.put("str", 2);
                 statMap.put("cha", 1);
+                this.setSpeed(30);
             case "tiefling":
                 statMap.put("intel", 1);
                 statMap.put("cha", 2);
+                this.setSpeed(30);
             case "gnome":
                 statMap.put("intel", 2);
+                this.setSpeed(25);
                 break;
             default:
                 return null;
@@ -205,5 +219,34 @@ public class Hero {
 
     public void setHpMaximum(Integer hpMaximum) {
         this.hpMaximum = hpMaximum;
+    }
+
+    public Integer getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Integer speed) {
+        this.speed = speed;
+    }
+
+    public Integer getHeroLevel() {
+        return heroLevel;
+    }
+
+    public void setHeroLevel(Integer heroLevel) {
+        this.heroLevel = heroLevel;
+    }
+
+    public Integer getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(Integer armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    private Integer findModifier(Integer statScore){
+        Integer scoreMod = (int)Math.floor(statScore/2) - 5;
+        return scoreMod;
     }
 }
