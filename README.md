@@ -2,24 +2,24 @@
 
 ## A character creation solution for Dungeons and Dragons
 
-Roll Hero is a simple app that aids in the creation of D&D characters; walking you through the process and generating your characters stats along the way.
-
-In the future, you will be able to log on and save your characters to your account.
+Roll Hero is a simple app that aids in the creation of first level D&D characters. Users are able to create accounts and save characters they've created 
 
 ## Running the App
 
-In the terminal, navigate to the topmost folder of the project. Enter `./gradlew bootRun` to start the app. In your browser, navigate to localhost/8080.
+In the terminal, navigate to the topmost folder of the project. Enter `./gradlew bootRun` to start the app. In your browser, navigate to localhost/8080. Create an account or log in and click on `Create A Hero` to get started!
 
 ## Features
 
-- Create a character with a name, race, class, random stats, and max HP.
+- Create a character with a name, race, class, random ability scores.
+- Choose where to assign your characters ability scores.
+- User login.
+- Character saving and loading.
 
 ### Future Features
 
-- user login
-- character saving/loading
-- manual stat assignment
-- random character generation?
+- Random character generation.
+- Character level-up.
+- Custom races and classes.
 
 ### Project documents
 
