@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -55,13 +56,11 @@ public class SiteUserController {
         return "login.html";
     }
     @GetMapping("/dashboard")
-    public String getDashboard(Principal p, Model m){
+    public RedirectView getDashboard(Principal p, Model m){
         SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
         m.addAttribute("siteUser", siteUser);
-        return "dashboard.html";
+        return new RedirectView("user/cards/" + siteUser.getId());
     }
-    @GetMapping("/secret") // For testing non-logged in user restriction
-    public String getSecret(){return "secretTEST.html";}
 
 //    UTILS
 
