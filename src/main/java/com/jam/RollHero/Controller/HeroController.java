@@ -5,6 +5,7 @@ import com.jam.RollHero.Model.SiteUser;
 import com.jam.RollHero.Repository.HeroRepository;
 import com.jam.RollHero.Repository.SiteUserRepository;
 import com.jam.RollHero.Util.Dice;
+import org.hibernate.query.QueryParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,10 +71,10 @@ public class HeroController {
         return null;
     }
 
-    @DeleteMapping("user/heroes/{id}")
-    public RedirectView deleteHero(Principal p,@PathVariable Long id, Long heroId){
-        SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
-        heroRepository.deleteById(heroId);
-        return new RedirectView("user/heroes/" + id);
+    @PostMapping("/deleteHero/{id}")
+    public RedirectView deleteHero(Principal p, @PathVariable Long id){
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        heroRepository.deleteById(id);
+        return new RedirectView("/user/cards/" + siteUser.getId());
     }
 }

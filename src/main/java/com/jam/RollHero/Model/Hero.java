@@ -61,6 +61,10 @@ public class Hero {
         return statMap;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setStatMap(HashMap<String, Integer> statMap) {
         this.statMap = statMap;
     }
