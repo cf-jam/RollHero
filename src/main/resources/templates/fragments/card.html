@@ -39,7 +39,7 @@
                         <!--                    <tbody th:each="stat : ${item.getStatMap.entrySet}">-->
                     </table>
 
-                    <form th:if="${siteUser} == ${viewUser}" th:action="${'/deleteHero/' + item.getId}" th:method="POST">
+                    <form th:if="${siteUser} == ${viewUser}" th:action="${'/deleteHero/' + item.getId}" method="POST">
 <!--                        <input type="hidden" name="heroId" th:value="${item.getId()}"/>-->
                         <button type="submit" class="btn btn-danger" >Danger</button>
                     </form>
