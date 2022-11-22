@@ -71,10 +71,10 @@ public class HeroController {
         return null;
     }
 
-    @DeleteMapping("/deleteHero/{id}")
-    public void deleteHero(Principal p, @PathVariable Long id){
+    @DeleteMapping("/deleteHero/{heroId}")
+    public RedirectView deleteHero(Principal p, @PathVariable Long id){
 //        SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
         heroRepository.deleteById(id);
-//        return new RedirectView("user/heroes/" + id);
+        return new RedirectView("user/heroes/" + id);
     }
 }
