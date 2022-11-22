@@ -39,9 +39,6 @@ public class SiteUserController {
         return "index.html";
     }
 
-    @GetMapping("/signup")
-    public String getSignup(){return "signup.html";}
-
     @PostMapping("/signup")
     public RedirectView postSignup(String username, String password){
         String hashedPw = passwordEncoder.encode(password);
