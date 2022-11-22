@@ -87,7 +87,7 @@ public class Hero {
     }
 
     public String describeHero() {
-        String about = this.getName() + " is a " + this.getHeroRace() + " with health of " + this.getHpMaximum();
+        String about = this.getName() + " is a level " + this.getHeroLevel() + " " + this.getHeroRace() + " " + this.getHeroClass() + ".";
         return about;
     }
 
@@ -245,8 +245,17 @@ public class Hero {
         this.armorClass = armorClass;
     }
 
-    private Integer findModifier(Integer statScore){
+    public Integer findModifier(Integer statScore){
         Integer scoreMod = (int)Math.floor(statScore/2) - 5;
         return scoreMod;
+    }
+    public String stringifyModifier(Integer statScore){
+        String retString ="";
+        Integer scoreMod = (int)Math.floor(statScore/2) - 5;
+        if(scoreMod >= 0){
+            retString += "+";
+        }
+        retString += scoreMod.toString();
+        return retString;
     }
 }
