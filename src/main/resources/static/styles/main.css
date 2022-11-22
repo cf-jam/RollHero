@@ -2,6 +2,6 @@
 
 
 .slow-spin:hover {
-  -webkit-animation: fa-spin 6s infinite linear;
-  animation: fa-spin 6s infinite linear;
+  -webkit-animation: fa-spin 3s infinite linear;
+  animation: fa-spin 3s infinite linear;
 }

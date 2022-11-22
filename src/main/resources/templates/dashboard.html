@@ -13,7 +13,7 @@
 <div class="col-auto">
 
     <h3 th:text="${'Welcome to RollHero ' + siteUser.username.substring(0,1).toUpperCase() + siteUser.username.substring(1)+'!'}"></h3>
-
+    <p th:text="${'Total registered users: '+ totalUsers}"></p>
     <p>image_placeholder</p>
     <hr>
     <div th:replace="/fragments/card :: section"></div>
