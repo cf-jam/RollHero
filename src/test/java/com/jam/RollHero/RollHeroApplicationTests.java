@@ -23,8 +23,7 @@ class RollHeroApplicationTests {
 	void testSetMap(){
 		Hero def = new Hero();
 		HashMap test = def.makeStatMap();
-		SiteUser testUser = new SiteUser()
-
+		SiteUser testUser = new SiteUser();
 //		Hero sut = new Hero("barbarian", "human", "dude", , test));
 //		assertTrue(sut.getStatMap()==null);
 	}
@@ -36,5 +35,4 @@ class RollHeroApplicationTests {
 		System.out.println("+++++++++++++++"+sut);
 		assertTrue(sut.getHeroRace()!=null);
 	}
-
 }
