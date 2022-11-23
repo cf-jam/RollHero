@@ -2,14 +2,24 @@ package com.jam.RollHero.Controller;
 
 import com.jam.RollHero.Model.SiteUser;
 import com.jam.RollHero.Repository.SiteUserRepository;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.Principal;
 
 @Controller
 public class SiteUserController {
@@ -25,35 +35,45 @@ public class SiteUserController {
 //    ROUTES
 
     @GetMapping("/")
-    public String getHomePage(){
+    public String getHomePage() {
         return "index.html";
     }
 
-    @GetMapping("/signup")
-    public String getSignup(){return "signup.html";}
-
     @PostMapping("/signup")
-    public String postSignup(String username, String password){
+    public RedirectView postSignup(String username, String password) {
         String hashedPw = passwordEncoder.encode(password);
         SiteUser newUser = new SiteUser(username, hashedPw);
         siteUserRepository.save(newUser);
         authWithHttpServletRequest(username, password);
-        return "secretTEST.html";
+        return new RedirectView("/dashboard");
     }
 
     @GetMapping("/login")
-    public String getLogin(){return "login.html";}
+    public String getLogin() {
+        return "index.html";
+    }
 
-    @GetMapping("/secret") // For testing non-logged in user restriction
-    public String getSecret(){return "secretTEST.html";}
+    @GetMapping("/dashboard")
+    public RedirectView getDashboard(Principal p, Model m) {
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
+        return new RedirectView("user/cards/" + siteUser.getId());
+    }
 
+    @GetMapping("/about")
+    public String getAbout(Principal p, Model m) {
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
+        return "about";
+    }
 //    UTILS
 
-    public void authWithHttpServletRequest(String username, String password){
+    public void authWithHttpServletRequest(String username, String password) {
         try {
             request.login(username, password);
         } catch (ServletException e) {
             e.printStackTrace();
         }
     }
+
 }
