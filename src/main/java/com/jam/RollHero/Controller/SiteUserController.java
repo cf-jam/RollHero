@@ -61,7 +61,9 @@ public class SiteUserController {
     }
 
     @GetMapping("/about")
-    public String getAbout() {
+    public String getAbout(Principal p, Model m) {
+        SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
+        m.addAttribute("siteUser", siteUser);
         return "about";
     }
 //    UTILS
