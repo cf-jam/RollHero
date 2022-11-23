@@ -46,7 +46,7 @@ public class Hero {
     }
 
     // TEST
-    public void dummyHeroStats(String str, String dex, String intel, String con, String wis, String cha) {
+    public void dummyHeroStats() {
         statMap.put("str", Dice.rollStat() + statMap.get("str"));
         statMap.put("dex", Dice.rollStat() + statMap.get("dex"));
         statMap.put("intel", Dice.rollStat() + statMap.get("intel"));
