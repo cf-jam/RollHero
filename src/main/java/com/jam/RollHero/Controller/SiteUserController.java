@@ -35,12 +35,12 @@ public class SiteUserController {
 //    ROUTES
 
     @GetMapping("/")
-    public String getHomePage(){
+    public String getHomePage() {
         return "index.html";
     }
 
     @PostMapping("/signup")
-    public RedirectView postSignup(String username, String password){
+    public RedirectView postSignup(String username, String password) {
         String hashedPw = passwordEncoder.encode(password);
         SiteUser newUser = new SiteUser(username, hashedPw);
         siteUserRepository.save(newUser);
@@ -49,19 +49,24 @@ public class SiteUserController {
     }
 
     @GetMapping("/login")
-    public String getLogin(){
+    public String getLogin() {
         return "index.html";
     }
+
     @GetMapping("/dashboard")
-    public RedirectView getDashboard(Principal p, Model m){
+    public RedirectView getDashboard(Principal p, Model m) {
         SiteUser siteUser = siteUserRepository.findByUsername(p.getName());
         m.addAttribute("siteUser", siteUser);
         return new RedirectView("user/cards/" + siteUser.getId());
     }
 
+    @GetMapping("/about")
+    public String getAbout() {
+        return "about";
+    }
 //    UTILS
 
-    public void authWithHttpServletRequest(String username, String password){
+    public void authWithHttpServletRequest(String username, String password) {
         try {
             request.login(username, password);
         } catch (ServletException e) {

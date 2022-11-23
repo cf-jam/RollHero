@@ -61,10 +61,12 @@ public class HeroController {
         try{
             SiteUser siteUser = siteUserRepository.findById(id).orElseThrow();
             SiteUser viewUser = siteUserRepository.findByUsername(p.getName());
-//            List<Hero> itemList = heroRepository.findAll();
+            List<SiteUser> totalUsers = siteUserRepository.findAll();
+            m.addAttribute("totalUsers",totalUsers.size());
             m.addAttribute("siteUser", siteUser);
             m.addAttribute("viewUser", viewUser);
             m.addAttribute("itemList", heroRepository.findAllBySiteUserId(id));
+
             return "/dashboard";
         }
         catch (Exception e){
